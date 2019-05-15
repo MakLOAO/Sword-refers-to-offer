@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class test {
 
 /**
@@ -10,8 +12,7 @@ public class test {
  * @create: 2019-04-14 21:10
  **/
     public static void main(String[] args) {
-        int i = 0;
-        System.out.println(~i+1);
+
 
     }
 }
