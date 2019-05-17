@@ -36,13 +36,14 @@ public class Solution {
             return 0;
         }
 
-        int result = array[0];
-        int times = 1;
+        // 把抵消过程看成是后面的数字去抵消前面的数字，前面的数字称为被抵消数字，后面的数字称为抵消数字
+        int result = array[0]; // 被抵消数字
+        int times = 1; // 可以看成是抵消数字的个数
         for (int i = 1; i < length; i++){
-            if (times == 0){
+            if (times == 0){ // 上一个被抵消数字已经被抵消数字抵消，重新取被抵消数字
                 result = array[i];
                 times = 1;
-            } else {
+            } else { // 抵消过程
                 if (array[i] == result){
                     times++;
                 } else {
