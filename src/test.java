@@ -14,10 +14,20 @@ public class test {
  * @create: 2019-04-14 21:10
  **/
     public static void main(String[] args) {
-        int[] a = {1,2,3,3,3,3,4,5};
-        int[] b = {1,2,3,3,3,4,5};
-        Solution s = new Solution();
-        System.out.println(s.GetNumberOfK(a, 3)); // 4
-        System.out.println(s.GetNumberOfK(b, 3)); // 3
+//        Map<Integer, String> map = new HashMap<>();
+//        map.put(1, "a");
+//        map.put(2, "b");
+//        map.put(3, "c");
+//        map.forEach((k, v) -> {
+//            // do something with k, v
+//        });
+//        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+//            // do something with entry.getKey() + entry.getValue();
+//        }
+        String[] ss = {"a", "b", "c"};
+        List<String> strings = Arrays.asList(ss);
+//        integerList.add("d");
+        strings.set(1, "f");
+        System.out.println(strings.get(1));
     }
 }
