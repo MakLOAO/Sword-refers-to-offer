@@ -25,9 +25,14 @@ public class test {
 //            // do something with entry.getKey() + entry.getValue();
 //        }
         String[] ss = {"a", "b", "c"};
-        List<String> strings = Arrays.asList(ss);
-//        integerList.add("d");
-        strings.set(1, "f");
-        System.out.println(strings.get(1));
+        List<String> strings = new ArrayList<>();
+        strings.add("a");
+        strings.add("b");
+        strings.add("c");
+        List<String> s = strings.subList(1,3);
+
+        for (String t : strings) System.out.println(t);
+        s.clear();
+        for (String t : strings) System.out.println(t);
     }
 }
