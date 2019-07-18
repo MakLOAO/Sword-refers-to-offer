@@ -24,15 +24,17 @@ public class test {
 //        for (Map.Entry<Integer, String> entry : map.entrySet()) {
 //            // do something with entry.getKey() + entry.getValue();
 //        }
-        String[] ss = {"a", "b", "c"};
-        List<String> strings = new ArrayList<>();
-        strings.add("a");
-        strings.add("b");
-        strings.add("c");
-        List<String> s = strings.subList(1,3);
+        String s = "hello aha";
+        char[] c = s.toCharArray();
+        reverseStr(c, 0, s.length());
+        System.out.println(String.valueOf(c));
+    }
 
-        for (String t : strings) System.out.println(t);
-        s.clear();
-        for (String t : strings) System.out.println(t);
+    private static void reverseStr(char[] chars, int begin, int end) {
+        for (int i = begin; i < end / 2; i++) {
+            char temp = chars[i];
+            chars[i] = chars[end - i - 1];
+            chars[end - i - 1] = temp;
+        }
     }
 }
