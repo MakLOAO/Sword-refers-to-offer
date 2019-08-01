@@ -26,6 +26,6 @@ public class Solution {
             if (numbers[i] == 0) zeroCount++;
             else if (numbers[i] == numbers[i + 1]) return false; // 0可以有重复，所以使用else if
         }
-        return numbers[4] - numbers[zeroCount] < 5;
+        return numbers[4] - numbers[zeroCount] < 5; // 最大值减去非0的最小值，如果小于5则有顺子
     }
 }

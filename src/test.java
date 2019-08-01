@@ -13,6 +13,12 @@ public class test {
  *
  * @create: 2019-04-14 21:10
  **/
+
+    static {
+        i = 0; // 正常编译通过
+        //System.out.println(i); // 提示非法向前引用
+    }
+    static int i = 1;
     public static void main(String[] args) {
 //        Map<Integer, String> map = new HashMap<>();
 //        map.put(1, "a");
@@ -24,17 +30,8 @@ public class test {
 //        for (Map.Entry<Integer, String> entry : map.entrySet()) {
 //            // do something with entry.getKey() + entry.getValue();
 //        }
-        String s = "hello aha";
-        char[] c = s.toCharArray();
-        reverseStr(c, 0, s.length());
-        System.out.println(String.valueOf(c));
+        System.out.println(i);
     }
 
-    private static void reverseStr(char[] chars, int begin, int end) {
-        for (int i = begin; i < end / 2; i++) {
-            char temp = chars[i];
-            chars[i] = chars[end - i - 1];
-            chars[end - i - 1] = temp;
-        }
-    }
+
 }
