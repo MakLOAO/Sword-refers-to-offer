@@ -30,7 +30,6 @@ public class test {
 //        for (Map.Entry<Integer, String> entry : map.entrySet()) {
 //            // do something with entry.getKey() + entry.getValue();
 //        }
-        System.out.println(i);
     }
 
 
