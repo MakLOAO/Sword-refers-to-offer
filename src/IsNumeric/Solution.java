@@ -31,7 +31,6 @@ public class Solution {
             index++;
             flag = isUnsignedNumber(str) || flag; // 点前可以没有数字，点后必须要有
         }
-        //if (flag == false) return flag;
         if (index < str.length && (str[index] == 'E' || str[index] == 'e')) {
             index++;
             flag = isNumber(str) && flag;
