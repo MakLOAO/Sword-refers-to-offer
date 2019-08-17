@@ -16,6 +16,7 @@ public class Solution {
 
     // 实现方法：依旧和层次遍历的相似，只不过在各层之间添加null做分隔，当queue.size()==1时意味只剩下一个null，退出循环
     // Boolean变量leftToRigth指示从左到右或从右到左访问
+    // null为上一层为下一层提前设置的分隔符，标识本层已经遍历完，遇到该null时下一层开始遍历（但此时queue中还有本层的结点，用于访问本层节点的左右子树）
     public ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
         if (pRoot == null) return ans;
