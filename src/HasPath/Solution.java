@@ -1,4 +1,4 @@
-package hasPath;
+package HasPath;
 
 public class Solution {
 
