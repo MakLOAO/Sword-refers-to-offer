@@ -33,17 +33,27 @@ public class Solution {
     private boolean matchCore(char[] str, int strIndex, char[] pattern, int patternIndex) {
         if (strIndex == str.length && patternIndex == pattern.length)
             return true;
+        // 如果串到达终点而模式还没到终点，则表示匹配失败
+        // 而如果串到终点，模式还没到终点，则不一定，因为可能有 "" 和 "x*"的情况
         if (strIndex != str.length && patternIndex == pattern.length)
             return false;
         if (patternIndex + 1 < pattern.length && pattern[patternIndex + 1] == '*') {
-            if (strIndex < str.length && patternIndex < pattern.length && (str[strIndex] == pattern[patternIndex] || pattern[patternIndex] == '.')) {
+            if (strIndex < str.length
+                    && patternIndex < pattern.length
+                    && (str[strIndex] == pattern[patternIndex] || pattern[patternIndex] == '.')) {
+                // 返回只匹配0个或匹配1个的情况（递归的情况下，总会有结束的时候，这个结束的时候就是匹配0个时候）
+                // 模式串匹配0个的情况，比如a和a*a，则a*匹配0个，a和后面的a匹配
                 return matchCore(str, strIndex, pattern, patternIndex + 2)
                         || matchCore(str, strIndex + 1, pattern, patternIndex);
             } else {
+                // 当*之前的不相等且不为 . ，则直接让模式往后走2步，跳过*
                 return matchCore(str, strIndex, pattern, patternIndex + 2); // aa与b*ac*a的情况
             }
         }
-        if (strIndex < str.length && patternIndex < pattern.length && (str[strIndex] == pattern[patternIndex] || pattern[patternIndex] == '.')) {
+        // 如果没有*，则相等或为 . 的时候，就让模式和串往后走一步
+        if (strIndex < str.length
+                && patternIndex < pattern.length
+                && (str[strIndex] == pattern[patternIndex] || pattern[patternIndex] == '.')) {
             return matchCore(str, strIndex + 1, pattern, patternIndex + 1);
         }
         return false;

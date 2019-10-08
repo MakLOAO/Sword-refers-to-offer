@@ -34,7 +34,7 @@ public class Solution {
         return false;
     }
 
-    // 矩阵的特点是每个点的上面元素都比它小，左边元素都比它大
+    // 从左下出发，矩阵的特点是每个点的上面元素都比它小，右边元素都比它大
     public boolean Find1(int target, int [][] array) {
         int rowLen = array.length;
         int colLen = array[0].length;

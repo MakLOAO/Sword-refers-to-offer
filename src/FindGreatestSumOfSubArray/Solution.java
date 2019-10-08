@@ -15,11 +15,11 @@ public class Solution {
     // -2,-8,-1,-5,-9
     public int FindGreatestSumOfSubArray(int[] array) {
         if (array.length == 0) return 0;
-        int j = 0;
-        int max = array[0], temp = 0;
+        int max = array[0], temp = array[0];
+        int j = 1;
         while (j < array.length) {
             if (temp <= 0) {
-                // while (array[j] < 0) j++; 这里是不能跳过的，要考虑到全为负的情况
+                // while (array[j] < 0) j++;
                 temp = array[j];
             } else temp += array[j];
             max = Math.max(max, temp);

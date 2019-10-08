@@ -16,7 +16,7 @@ public class Solution {
  * @create: 2019-08-01 10:24
  **/
 
-    // 用链表模拟过程
+    // 用链表模拟过程，使用迭代器和直接remove(i)感觉时间上差不多
     public int LastRemaining_Solution_Simu(int n, int m) {
         if (n <= 0 || m <= 0) return -1;
         if (n == 1) return 0;
@@ -35,8 +35,8 @@ public class Solution {
         return ((LinkedList<Integer>) list).remove();
     }
 
-    // 约瑟夫环，数学归纳法（看不懂）
-    // 某个人出列后，整个问题就编程了n-1规模的子问题
+    // 约瑟夫环，数学归纳法
+    // 某个人出列后，整个问题就变成了n-1规模的子问题，此时子问题中的0是父问题中的m
     public int LastRemaining_Solution(int n, int m) {
         if (n == 0) return -1;
         if (n == 1) return 0;

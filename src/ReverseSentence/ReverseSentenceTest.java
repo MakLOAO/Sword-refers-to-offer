@@ -14,7 +14,7 @@ public class ReverseSentenceTest {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String ans = s.ReverseSentence("Hello World !?!");
+        String ans = s.ReverseSentence1("World Hello");
         System.out.println(ans);
     }
 }

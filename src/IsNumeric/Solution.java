@@ -18,23 +18,22 @@ public class Solution {
     ±后可以直接带点，点前可以没有任何数字，但是点后必须要有数字
      */
     private int index;
-
     public boolean isNumeric(char[] str) {
-        if (str == null || str.length < 1) return false;
-        return isNumericCore(str);
-    }
-
-    private boolean isNumericCore(char[] str) {
-        boolean flag;
-        flag = isNumber(str);
+        if (str.length == 0 || str == null) return false;
+        boolean flag = isNumber(str);
+        // 如果遇到小数点，则判断小数点后面是否是纯数字
         if (index < str.length && str[index] == '.') {
             index++;
-            flag = isUnsignedNumber(str) || flag; // 点前可以没有数字，点后必须要有
+            // 小数点之前可以无数字，因此这里使用 ||
+            flag = isUnsignedNumber(str) || flag;
         }
+        // 如果有E，判断E之后的是否为数字
         if (index < str.length && (str[index] == 'E' || str[index] == 'e')) {
             index++;
+            // E之前必须有数字，因此这里使用 &&
             flag = isNumber(str) && flag;
         }
+        // e之后有数字，且只有数字
         return flag && index == str.length;
     }
 
@@ -48,6 +47,6 @@ public class Solution {
         int start = index;
         while (index < str.length && str[index] <= '9' && str[index] >= '0')
             index++;
-        return start < index; // 只要存在数字就返回true，否则返回false（即±后紧接一个非数字的符号）
+        return start < index;
     }
 }

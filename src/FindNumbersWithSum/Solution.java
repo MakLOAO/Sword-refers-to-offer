@@ -14,19 +14,21 @@ public class Solution {
  * @create: 2019-07-17 17:31
  **/
     // 这题同上一题一样也可以用两个指针解决，当两个指针相加的值相同，在最两边的时候乘积一定比在中间的小（如1,2,3,4，1+4=2+3,1*4<2*3）
-    public ArrayList<Integer> FindNumbersWithSum(int [] array, int sum) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public ArrayList<Integer> FindNumbersWithSum(int [] array,int sum) {
         int left = 0, right = array.length - 1;
+        ArrayList<Integer> ans = new ArrayList<>();
         while (left < right) {
-            int sumOfTwo = array[left] + array[right];
-            if (sumOfTwo == sum) {
-                result.add(array[left]);
-                result.add(array[right]);
-                return result;
+            int sum1 = array[left] + array[right];
+            if (sum1 == sum) {
+                ans.add(array[left]);
+                ans.add(array[right]);
+                return ans;
+            } else if (sum1 < sum) {
+                left++;
+            } else {
+                right--;
             }
-            if (sumOfTwo > sum) right--;
-            else left++;
         }
-        return result;
+        return ans;
     }
 }

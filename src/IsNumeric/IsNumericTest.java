@@ -13,7 +13,7 @@ public class IsNumericTest {
  **/
     public static void main(String[] args) {
         Solution s = new Solution();
-        String str = "12e";
+        String str = "a.2";
         char[] chars = str.toCharArray();
         System.out.println(s.isNumeric(chars));
     }

@@ -28,4 +28,20 @@ public class Solution {
         }
         return -1;
     }
+
+    public int FirstNotRepeatingChar2(String str) {
+        if (str == null || str.length() == 0) return -1;
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            char temp = str.charAt(i);
+            if (!map.containsKey(temp))
+                map.put(temp, 1);
+            else map.put(temp, map.get(temp) + 1);
+        }
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1)
+                return str.indexOf(entry.getKey());
+        }
+        return -1;
+    }
 }

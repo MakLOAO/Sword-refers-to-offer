@@ -17,6 +17,7 @@ public class Solution {
     }
 
     // 从下往上遍历，如果子树是平衡二叉树，则返回子树的高度；如果发现子树不是平衡二叉树，则直接停止遍历，这样至多只对每个结点访问一次
+    // 计算root的高度，如果判断其子树高度差大于1，则返回-1
     private int getDepth(TreeNode root) {
         if (root == null) return 0;
         int left = getDepth(root.left);

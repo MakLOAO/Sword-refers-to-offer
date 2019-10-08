@@ -18,13 +18,14 @@ public class Solution {
     public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
         ArrayList<Integer> list = new ArrayList<>();
+        TreeNode p;
         if (root == null) return list;
         queue.add(root);
         while (!queue.isEmpty()) {
-            root = queue.remove();
-            list.add(root.val);
-            if (root.left != null) queue.add(root.left);
-            if (root.right != null) queue.add(root.right);
+            p = queue.remove();
+            list.add(p.val);
+            if (p.left != null) queue.add(p.left);
+            if (p.right != null) queue.add(p.right);
         }
         return list;
     }

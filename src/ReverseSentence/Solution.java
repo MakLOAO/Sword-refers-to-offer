@@ -37,4 +37,30 @@ public class Solution {
             chars[end - i - 1 + begin] = temp;
         }
     }
+
+    // 这两个的实现实际上是一样的，我两次写的有点出入而已
+    // 要处理最后一个单词的转换，可以在原str的开头添加" "，也可以作i==str.length的判断
+    public String ReverseSentence1(String str) {
+        if (str == null) return null;
+        if (str.length() == 0) return "";
+        // str = " " + str;
+        char[] in = str.toCharArray();
+        reverse(in, 0, in.length - 1);
+        int border = 0;
+        for (int i = 0; i <= in.length; i++) {
+            if (i == in.length || in[i] == ' ') {
+                reverse(in, border, i - 1);
+                border = i + 1;
+            }
+        }
+        return String.valueOf(in);
+    }
+
+    private void reverse(char[] in, int begin, int end) {
+        for (int i = begin; i < begin + (end - begin + 1) / 2; i++) {
+            char temp = in[i];
+            in[i] = in[end - i + begin];
+            in[end - i + begin] = temp;
+        }
+    }
 }

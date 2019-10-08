@@ -19,10 +19,10 @@ public class Solution {
     * 先序的第一个结点为根结点（递归），在中序中找到先序第一个结点，其左边为其左子树，右边为右子树
     * 然后对其左子树对应的先序序列，右子树的先序序列分别递归求根，找到中序中的左子树，求右子树，依次下去
      */
-public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
-    if (pre.length == 0 || in.length == 0 || pre.length != in.length) return null;
-    return reConstructBinaryTree(pre, 0, pre.length - 1, in, 0, in.length - 1);
-}
+    public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
+        if (pre.length == 0 || in.length == 0 || pre.length != in.length) return null;
+        return reConstructBinaryTree(pre, 0, pre.length - 1, in, 0, in.length - 1);
+    }
 
     public TreeNode reConstructBinaryTree(int[] pre, int preStart, int preEnd, int[] in, int inStart, int inEnd) {
         if (preStart > preEnd || inStart > inEnd) return null;

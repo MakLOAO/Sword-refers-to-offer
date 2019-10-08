@@ -26,6 +26,7 @@ public class Solution {
         } else {
             return 1;
         }
+        // 快速幂算法，时间复杂度O(logn)
         while (exponent != 0) {
             if ((exponent & 1) == 1)
                 res *= curr;

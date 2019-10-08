@@ -14,7 +14,7 @@ public class Solution {
  *
  * @create: 2019-05-15 08:34
  **/
-    // 算法思想：采用递归，首先依次交换首元素和后面的元素，例如abc得bac，cba，然后固定第一个元素，对后面的元素递归交换，得acb，bca，cab
+    // 算法思想：采用递归，首先依次交换首元素和后面的每一个元素，例如abc得bac，cba，然后固定第一个元素，对后面的元素递归交换，得acb，bca，cab
     // 递归结束条件：i = length - 1（交换到最后一个元素），递归结束后把结果存入list
     // 难点：每次递归结束后都要把数组恢复原来的状态
     public ArrayList<String> Permutation(String str) {

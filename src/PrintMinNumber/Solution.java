@@ -21,11 +21,13 @@ public class Solution {
      * 若ab > ba 则 a > b，
      * 若ab < ba 则 a < b，
      * 若ab = ba 则 a = b；
+     * a = 32, b = 321
+     * ab = 32321, ba = 32132, ab > ba, 则a > b
      */
     public String PrintMinNumber(int [] numbers) {
         if (numbers == null) return null;
         else if (numbers.length == 0) return "";
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>(numbers.length);
         for (int i : numbers) list.add(i);
         list.sort((Integer a, Integer b)-> {
                 String s1 = a + "" + b;

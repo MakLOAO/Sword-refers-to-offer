@@ -22,34 +22,29 @@ public class Solution {
     // 算法思想：每次走半圈就if内判断，防止奇数行时走到中间行从左往右走然后又原路返回的情况（或奇数列），然后while外判断是走一圈后判断是否走完
     public ArrayList<Integer> printMatrix(int [][] matrix) {
         ArrayList<Integer> list = new ArrayList<>();
-        int rowTop = 0, rowBottom = matrix.length - 1;
-        int colLeft = 0, colRight = matrix[0].length - 1;
-        int row = rowTop, col = colLeft;
-        while (rowTop <= rowBottom && colLeft <= colRight) {
-            if (rowTop <= rowBottom && colLeft <= colRight) {
-                for (col = colLeft; col <= colRight; col++) {
-                    list.add(matrix[row][col]);
-                }
-                rowTop++;
-                col--;
-                for (row = rowTop; row <= rowBottom; row++) {
-                    list.add(matrix[row][col]);
-                }
-                colRight--;
-                row--;
+        int left = 0, right = matrix[0].length - 1;
+        int up = 0, down = matrix.length - 1;
+        while (true) {
+            for (int i = left; i <= right; i++) {
+                list.add(matrix[up][i]);
             }
-            if (rowTop <= rowBottom && colLeft <= colRight) {
-                for (col = colRight; col >= colLeft; col--) {
-                    list.add(matrix[row][col]);
-                }
-                rowBottom--;
-                col++;
-                for (row = rowBottom; row >= rowTop; row--) {
-                    list.add(matrix[row][col]);
-                }
-                colLeft++;
-                row++;
+            if (++up > down)
+                break;
+            for (int i = up; i <= down; i++) {
+                list.add(matrix[i][right]);
             }
+            if (--right < left)
+                break;
+            for (int i = right; i >= left; i--) {
+                list.add(matrix[down][i]);
+            }
+            if (--down < up)
+                break;
+            for (int i = down; i >= up; i--) {
+                list.add(matrix[i][left]);
+            }
+            if (++left > right)
+                break;
         }
         return list;
     }

@@ -19,13 +19,14 @@ public class Solution {
     //Insert one char from stringstream
     public void Insert(char ch)
     {
-        map.put(ch, map.getOrDefault(ch, -1) + 1);
+        map.put(ch, map.getOrDefault(ch, 0) + 1);
     }
     //return the first appearence once char in current stringstream
     public char FirstAppearingOnce()
     {
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-            if (entry.getValue() == 0) return entry.getKey();
+            if (entry.getValue() == '1')
+                return entry.getKey();
         }
         return '#';
     }

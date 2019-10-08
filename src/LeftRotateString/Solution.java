@@ -25,12 +25,11 @@ public class Solution {
 
     // O(1)?
     public String LeftRotateString(String str,int n) {
+        if (str == null) return null;
         int length = str.length();
-        if (length == 0) return str;
+        if (length == 0) return "";
         int t = n % length;
         str += str;
-        //String ans = str.substring(t, length) + str.substring(0, t);
-        //return ans
         return str.substring(t, length + t);
     }
 }

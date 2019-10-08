@@ -11,12 +11,13 @@ public class Solution {
  *
  * @create: 2019-04-13 09:46
  **/
+    // 这个解法没有考虑到重复元素，是错误的！！
     // 折半查找的变形，在递增序列中（无重复元素），思路如下：
     // 旋转数组的特征：两个递增序列，后一个递增序列永远小于前一个递增序列，且最小值在后一个递增序列的第一个元素
     // 令left在前面递增序列，right在后面递增序列
     // 判断mid在第一个递增序列(array[mid]>array[left])还是第二个递增序列(array[mid]<array[left])
     // 如果min在第一个递增序列，则left=min，否则right=mid，不断缩小left与right，最后left指向第一个递增序列的最后一个元素，right指向第二个递增序列的第一个元素。
-    public int minNumberInRotateArray(int [] array) {
+    public int minNumberInRotateArray2(int [] array) {
         int left = 0, right = array.length - 1; // left：旋转数组
         int min = Integer.MAX_VALUE;
         while (left < right) {
@@ -34,5 +35,25 @@ public class Solution {
             if (array[i] < array[i - 1]) break;
         }
         return array[i];
+    }
+
+    // 这才是正解
+    public int minNumberInRotateArray(int [] array) {
+        if (array == null || array.length == 0) return 0;
+        int left = 0, right = array.length - 1, mid;
+        while (left < right) {
+            mid = left + (right - left) / 2;
+            if (array[mid] > array[right]) {
+                // 在左半部分，则缩减左半部分
+                left = mid + 1;
+            } else if (array[mid] == array[right]) {
+                // 在右半部分，且mid到right的元素相等
+                right--;
+            } else {
+                // 在右半部分
+                right = mid;
+            }
+        }
+        return array[left];
     }
 }

@@ -46,6 +46,46 @@ public class Solution {
         }
         return ans;
     }
+
+    public ArrayList<ArrayList<Integer> > Print1(TreeNode pRoot) {
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        if (pRoot == null) return ans;
+        ArrayList<Integer> layerList = new ArrayList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        LinkedList<TreeNode> deque = new LinkedList<>();
+        TreeNode p = pRoot;
+        boolean leftToRight = true;
+        int count = 0, nextCount = 1;
+        queue.addLast(p);
+        while (!queue.isEmpty()) {
+            p = queue.removeFirst();
+            deque.addLast(p);
+            count++;
+            if (p.left != null)
+                queue.addLast(p.left);
+            if (p.right != null)
+                queue.addLast(p.right);
+            if (count == nextCount) {
+                if (leftToRight) {
+                    while (!deque.isEmpty()) {
+                        layerList.add(deque.removeFirst().val);
+                    }
+                } else {
+                    while (!deque.isEmpty()) {
+                        layerList.add(deque.removeLast().val);
+                    }
+                }
+                leftToRight = !leftToRight;
+                ans.add(layerList);
+                layerList = new ArrayList<>();
+                nextCount = queue.size();
+                count = 0;
+            }
+        }
+        return ans;
+    }
+
+
 }
 
 class TreeNode {

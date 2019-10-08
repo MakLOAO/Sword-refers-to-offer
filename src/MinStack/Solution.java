@@ -1,4 +1,5 @@
 package MinStack;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class Solution {
@@ -16,13 +17,13 @@ public class Solution {
     // e.g: data: 2 4 1 5 3
     //      minS: 2 2 1 1 1
     // minStack和data等长，minStack保存当前栈内最小值，它与data同步push和同步pop
-    Stack<Integer> data = new Stack<>();
-    Stack<Integer> minStack = new Stack<>();
+    LinkedList<Integer> data = new LinkedList<>();
+    LinkedList<Integer> minStack = new LinkedList<>();
     int min = Integer.MAX_VALUE;
 
     public void push(int node) {
         data.push(node);
-        if (!minStack.empty()) min = minStack.peek();
+        if (!minStack.isEmpty()) min = minStack.peek();
         if (node < min) minStack.push(node);
         else minStack.push(min);
     }

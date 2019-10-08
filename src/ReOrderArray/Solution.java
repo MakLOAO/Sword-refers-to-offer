@@ -15,9 +15,10 @@ public class Solution {
     public void reOrderArray(int [] array) {
         int i, j;
         for (i = 1; i < array.length; i++) {
-            if (array[i] % 2 == 1) {
+            // 如果是奇数，则记录前移
+            if ((array[i] & 1) == 1) {
                 int temp = array[i];
-                for (j = i - 1; j >= 0 && array[j] % 2 == 0; j--)
+                for (j = i - 1; j >= 0 && (array[j] & 1) == 0; j--)
                     array[j + 1] = array[j];
                 array[j + 1] = temp;
             }

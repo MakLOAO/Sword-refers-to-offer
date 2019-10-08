@@ -17,25 +17,13 @@ public class Solution {
  **/
 
     // 用二叉堆实现，构造函数为PriorityQueue(int initialCapacity, Comparator<? super E> comparator) ，自己实现comparator
+    /*
+    一个控制空间复杂度在O(k)（k是最小的k个元素）的方法是：
+    创建只有k个元素的**大顶堆**，遍历input数组，如果堆的容量不等于k，就直接offer进去，
+    如果等于k，判断堆顶元素是否比待插入元素大，如果是则出堆，让待插入元素进堆，
+    这样遍历结束后，堆就是只有最小的4个元素的堆
+     */
     public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
-        ArrayList<Integer> list = new ArrayList<>();
-        if (input.length == 0 || k > input.length || k <= 0) return list;
-        PriorityQueue<Integer> heap = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1.compareTo(o2);
-            }
-        });
-        for (int i = 0; i < input.length; i++) {
-            heap.add(input[i]);
-        }
-        for (int i = 0; i < k; i++) {
-            list.add(heap.poll());
-        }
-        return list;
-    }
-
-    public ArrayList<Integer> GetLeastNumbers_Solution1(int [] input, int k) {
         ArrayList<Integer> list = new ArrayList<>();
         if (input.length == 0 || k > input.length || k <= 0) return list;
         PriorityQueue<Integer> heap = new PriorityQueue<>(new Comparator<Integer>() {

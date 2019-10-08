@@ -26,7 +26,9 @@ public class Solution {
                     sequenceList.add(i);
                 }
                 result.add(sequenceList);
+                // left++;
             }
+            // 这里如果使用的是else if，需要把上面的注释去掉，否则会陷入死循环
             if (sumOfSequence < sum) {
                 right++;
             } else {

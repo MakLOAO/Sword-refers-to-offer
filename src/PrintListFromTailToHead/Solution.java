@@ -1,8 +1,7 @@
 package PrintListFromTailToHead;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.LinkedList;
 
 public class Solution {
 
@@ -27,7 +26,10 @@ public class Solution {
             HEAD.next = p;
             p = q;
         }
+        p = HEAD;
         HEAD = HEAD.next;
+        p.next = null;
+        p = null; // help GC
         while (HEAD != null) {
             list.add(HEAD.val);
             HEAD = HEAD.next;
@@ -36,16 +38,27 @@ public class Solution {
     }
 
     public ArrayList<Integer> printListFromTailToHead1(ListNode listNode) {
-        Stack<Integer> stack = new Stack<>();
+        LinkedList<ListNode> stack = new LinkedList<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        if (listNode == null) return ans;
         ListNode p = listNode;
         while (p != null) {
-            stack.push(p.val);
+            stack.push(p);
             p = p.next;
         }
-        ArrayList<Integer> list = new ArrayList<>();
-        while (!stack.empty())
-            list.add(stack.pop());
-        return list;
+        while (!stack.isEmpty())
+            ans.add(stack.pop().val);
+        return ans;
+    }
+
+    private ArrayList<Integer> ans = new ArrayList<>();
+
+    public ArrayList<Integer> printListFromTailToHead2(ListNode listNode) {
+        if (listNode != null) {
+            printListFromTailToHead2(listNode.next);
+            ans.add(listNode.val);
+        }
+        return ans;
     }
 }
 
